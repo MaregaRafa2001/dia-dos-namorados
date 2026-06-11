@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0611" />
+  <title>Feliz Dia dos Namorados, RibeiroLet ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..700,50&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #050308;
+      --panel: rgba(14, 8, 24, 0.72);
+      --panel-strong: rgba(18, 10, 32, 0.92);
+      --text: #f7efff;
+      --muted: rgba(247, 239, 255, 0.72);
+      --pink: #ff4fd8;
+      --purple: #8b5cf6;
+      --purple-2: #5b21b6;
+      --accent: #f472b6;
+      --line: rgba(255,255,255,.12);
+      --shadow: 0 24px 70px rgba(0,0,0,.45);
+      --font-ui: "Fraunces", Georgia, serif;
+      --font-cormorant: "Cormorant Garamond", Georgia, serif;
+      --font-playfair: "Playfair Display", Georgia, serif;
+      --font-prata: "Prata", Georgia, serif;
+      --font-fraunces: "Fraunces", Georgia, serif;
+      --font-instrument: "Instrument Serif", Georgia, serif;
+      --font-dm-serif: "DM Serif Display", Georgia, serif;
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at top, rgba(139,92,246,.18), transparent 28%),
+        radial-gradient(circle at 80% 20%, rgba(255,79,216,.14), transparent 24%),
+        linear-gradient(180deg, #090510 0%, #040206 100%);
+      color: var(--text);
+      font-family: var(--font-ui);
+      font-optical-sizing: auto;
+      font-variation-settings: "SOFT" 50;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,79,216,.12), transparent 18%),
+        radial-gradient(circle at 80% 15%, rgba(139,92,246,.14), transparent 20%),
+        radial-gradient(circle at 50% 80%, rgba(244,114,182,.08), transparent 18%);
+      pointer-events: none;
+    }
+
+    .app {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .phone {
+      position: relative;
+      width: min(100vw, 430px);
+      height: 100vh;
+      max-height: 100vh;
+      background: rgba(0,0,0,.24);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .story {
+      --story-angle: 180deg;
+      --story-pink: rgba(255,79,216,.30);
+      --story-purple: rgba(139,92,246,.28);
+      --story-accent: rgba(244,114,182,.16);
+      --story-top-x: 18%;
+      --story-top-y: 12%;
+      --story-bottom-x: 82%;
+      --story-bottom-y: 84%;
+      --story-center-x: 52%;
+      --story-center-y: 48%;
+      position: absolute;
+      inset: 0;
+      display: none;
+      padding: env(safe-area-inset-top) 16px env(safe-area-inset-bottom);
+      background:
+        linear-gradient(180deg, rgba(16,8,22,.26) 0%, rgba(8,3,14,.16) 28%, rgba(4,2,9,.34) 100%),
+        radial-gradient(circle at var(--story-top-x) var(--story-top-y), var(--story-pink) 0%, transparent 34%),
+        radial-gradient(circle at var(--story-bottom-x) var(--story-bottom-y), var(--story-purple) 0%, transparent 40%),
+        radial-gradient(circle at var(--story-center-x) var(--story-center-y), var(--story-accent) 0%, transparent 46%),
+        linear-gradient(var(--story-angle), #230a2f 0%, #13071f 38%, #07030d 100%);
+      isolation: isolate;
+    }
+
+    .story.active { display: flex; }
+
+    .story::before,
+    .story::after {
+      content: "";
+      position: absolute;
+      inset: -12%;
+      pointer-events: none;
+      z-index: -1;
+      opacity: .95;
+    }
+
+    .story::before {
+      background:
+        radial-gradient(circle at 20% 24%, rgba(255,79,216,.22), transparent 18%),
+        radial-gradient(circle at 72% 18%, rgba(139,92,246,.18), transparent 24%),
+        radial-gradient(circle at 62% 74%, rgba(232,121,249,.12), transparent 22%);
+      filter: blur(24px);
+      animation: storyAuraFloat 14s ease-in-out infinite alternate;
+    }
+
+    .story::after {
+      background:
+        linear-gradient(135deg, rgba(255,79,216,.08), transparent 22%, transparent 78%, rgba(139,92,246,.10)),
+        radial-gradient(circle at 48% 54%, rgba(255,255,255,.04), transparent 28%);
+      mix-blend-mode: screen;
+      animation: storyAuraDrift 18s linear infinite alternate;
+    }
+
+    .story[data-story="0"] {
+      --story-angle: 185deg;
+      --story-top-x: 16%;
+      --story-top-y: 10%;
+      --story-bottom-x: 84%;
+      --story-bottom-y: 82%;
+      --story-center-x: 52%;
+      --story-center-y: 34%;
+    }
+
+    .story[data-story="1"] {
+      --story-angle: 196deg;
+      --story-pink: rgba(255,79,216,.34);
+      --story-top-x: 24%;
+      --story-top-y: 18%;
+      --story-bottom-x: 76%;
+      --story-bottom-y: 78%;
+      --story-center-x: 58%;
+      --story-center-y: 48%;
+    }
+
+    .story[data-story="2"] {
+      --story-angle: 170deg;
+      --story-purple: rgba(139,92,246,.34);
+      --story-top-x: 78%;
+      --story-top-y: 12%;
+      --story-bottom-x: 18%;
+      --story-bottom-y: 84%;
+      --story-center-x: 48%;
+      --story-center-y: 58%;
+    }
+
+    .story[data-story="3"] {
+      --story-angle: 188deg;
+      --story-pink: rgba(255,79,216,.32);
+      --story-accent: rgba(244,114,182,.20);
+      --story-top-x: 12%;
+      --story-top-y: 26%;
+      --story-bottom-x: 86%;
+      --story-bottom-y: 68%;
+      --story-center-x: 42%;
+      --story-center-y: 40%;
+    }
+
+    .story[data-story="4"] {
+      --story-angle: 202deg;
+      --story-purple: rgba(139,92,246,.32);
+      --story-top-x: 22%;
+      --story-top-y: 8%;
+      --story-bottom-x: 88%;
+      --story-bottom-y: 86%;
+      --story-center-x: 64%;
+      --story-center-y: 34%;
+    }
+
+    .story[data-story="5"] {
+      --story-angle: 174deg;
+      --story-pink: rgba(255,79,216,.28);
+      --story-purple: rgba(167,139,250,.32);
+      --story-top-x: 74%;
+      --story-top-y: 20%;
+      --story-bottom-x: 22%;
+      --story-bottom-y: 80%;
+      --story-center-x: 40%;
+      --story-center-y: 52%;
+    }
+
+    .story[data-story="6"] {
+      --story-angle: 192deg;
+      --story-pink: rgba(255,79,216,.36);
+      --story-top-x: 18%;
+      --story-top-y: 14%;
+      --story-bottom-x: 80%;
+      --story-bottom-y: 74%;
+      --story-center-x: 54%;
+      --story-center-y: 62%;
+    }
+
+    .story[data-story="7"] {
+      --story-angle: 180deg;
+      --story-purple: rgba(139,92,246,.36);
+      --story-top-x: 82%;
+      --story-top-y: 16%;
+      --story-bottom-x: 16%;
+      --story-bottom-y: 76%;
+      --story-center-x: 62%;
+      --story-center-y: 46%;
+    }
+
+    .story[data-story="8"] {
+      --story-angle: 200deg;
+      --story-pink: rgba(255,79,216,.30);
+      --story-accent: rgba(216,180,254,.18);
+      --story-top-x: 14%;
+      --story-top-y: 18%;
+      --story-bottom-x: 86%;
+      --story-bottom-y: 82%;
+      --story-center-x: 50%;
+      --story-center-y: 30%;
+    }
+
+    .story[data-story="9"] {
+      --story-angle: 176deg;
+      --story-pink: rgba(255,79,216,.34);
+      --story-purple: rgba(139,92,246,.34);
+      --story-top-x: 20%;
+      --story-top-y: 12%;
+      --story-bottom-x: 82%;
+      --story-bottom-y: 88%;
+      --story-center-x: 58%;
+      --story-center-y: 42%;
+    }
+
+    @keyframes storyAuraFloat {
+      from {
+        transform: translate3d(-8px, -10px, 0) scale(1);
+      }
+      to {
+        transform: translate3d(10px, 12px, 0) scale(1.05);
+      }
+    }
+
+    @keyframes storyAuraDrift {
+      from {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+      }
+      to {
+        transform: translate3d(8px, -6px, 0) rotate(2deg);
+      }
+    }
+
+    .story-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+    }
+
+    .story-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding-top: 10px;
+      padding-bottom: 14px;
+    }
+
+    .progress-wrap {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 4px;
+      padding: 0 2px;
+      margin-top: 4px;
+    }
+
+    .progress {
+      height: 3px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.16);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress > span {
+      display: block;
+      height: 100%;
+      width: 100%;
+      transform-origin: left;
+      transform: scaleX(0);
+      background: linear-gradient(90deg, var(--pink), var(--purple));
+      border-radius: inherit;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 2px 2px 0;
+    }
+
+    .title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .2px;
+      color: rgba(255,255,255,.92);
+    }
+
+    .subtitle {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.08);
+      color: rgba(255,255,255,.85);
+      backdrop-filter: blur(12px);
+      white-space: nowrap;
+    }
+
+    .content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      min-height: 0;
+    }
+
+    .card {
+      width: 100%;
+      min-height: 74%;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(23, 11, 34, .76), rgba(9, 5, 16, .82));
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 20px 50px rgba(0,0,0,.35);
+      padding: 22px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: auto -30% -30% auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,79,216,.18), transparent 68%);
+      filter: blur(8px);
+      pointer-events: none;
+    }
+
+    .hero {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 4px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(255,79,216,.16), rgba(139,92,246,.16));
+      border: 1px solid rgba(255,255,255,.10);
+      color: rgba(255,255,255,.9);
+      font-size: 12px;
+      letter-spacing: .2px;
+    }
+
+    .big-title {
+      font-size: clamp(34px, 8.4vw, 48px);
+      line-height: .98;
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      text-wrap: balance;
+    }
+
+    .main-text {
+      font-size: clamp(21px, 5.5vw, 28px);
+      line-height: 1.25;
+      margin: 0;
+      text-wrap: balance;
+      color: rgba(255,255,255,.94);
+      font-weight: 600;
+    }
+
+    .story-text {
+      font-size: clamp(20px, 5vw, 27px);
+      line-height: 1.36;
+      margin: 0;
+      color: rgba(255,255,255,.93);
+      font-family: var(--font-fraunces);
+      font-weight: 500;
+      font-optical-sizing: auto;
+      font-variation-settings: "SOFT" 50;
+      letter-spacing: .01em;
+      text-wrap: pretty;
+      white-space: pre-wrap;
+    }
+
+    .text-card,
+    .hero-romance {
+      min-height: 78%;
+      padding: 28px 22px;
+      background:
+        radial-gradient(circle at 14% 18%, rgba(255,79,216,.18), transparent 28%),
+        radial-gradient(circle at 86% 82%, rgba(139,92,246,.18), transparent 34%),
+        linear-gradient(180deg, rgba(8,5,12,.98) 0%, rgba(2,1,4,.99) 100%);
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.03), 0 26px 60px rgba(0,0,0,.5);
+    }
+
+    .text-card::before,
+    .hero-romance::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(255,79,216,.08), transparent 26%),
+        linear-gradient(315deg, rgba(139,92,246,.08), transparent 30%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .text-card::after,
+    .hero-romance::after {
+      inset: auto -18% -16% auto;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(255,79,216,.12), transparent 40%), radial-gradient(circle at 40% 40%, rgba(139,92,246,.18), transparent 62%);
+      filter: blur(10px);
+      z-index: 0;
+    }
+
+    .text-card > *,
+    .hero-romance > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-romance .big-title,
+    .hero-romance .main-text {
+      font-family: var(--font-fraunces);
+      font-optical-sizing: auto;
+      font-variation-settings: "SOFT" 50;
+    }
+
+    .hero-romance .big-title {
+      max-width: 10ch;
+    }
+
+    .font-playfair .story-text {
+      font-family: var(--font-fraunces);
+    }
+
+    .font-prata .story-text {
+      font-family: var(--font-fraunces);
+    }
+
+    .font-fraunces .story-text {
+      font-family: var(--font-fraunces);
+      font-weight: 500;
+      font-variation-settings: "SOFT" 50;
+    }
+
+    .font-instrument .story-text {
+      font-family: var(--font-fraunces);
+      font-style: normal;
+    }
+
+    .font-dm-serif .story-text {
+      font-family: var(--font-fraunces);
+    }
+
+    .small {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .timer-box {
+      margin-top: 6px;
+      padding: 16px 14px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      backdrop-filter: blur(10px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+      text-align: center;
+    }
+
+    .timer-label {
+      font-size: 12px;
+      color: rgba(255,255,255,.72);
+      margin-bottom: 8px;
+    }
+
+    .timer {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .tblock {
+      border-radius: 18px;
+      padding: 10px 8px;
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .tval {
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .tunit {
+      display: block;
+      margin-top: 5px;
+      font-size: 10px;
+      color: rgba(255,255,255,.7);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      min-height: 100%;
+      border-radius: 28px;
+      border: 1px dashed rgba(255,255,255,.18);
+      background:
+        linear-gradient(135deg, rgba(255,79,216,.12), rgba(139,92,246,.12)),
+        rgba(255,255,255,.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      color: rgba(255,255,255,.72);
+      font-size: 17px;
+      line-height: 1.45;
+      min-height: 72vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .photo-placeholder strong {
+      display: block;
+      color: rgba(255,255,255,.96);
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .controls-hint {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: auto;
+      padding: 0 2px 2px;
+      font-size: 11px;
+      color: rgba(255,255,255,.55);
+    }
+
+    .tap-zone {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 32%;
+      z-index: 10;
+    }
+
+    .tap-left { left: 0; }
+    .tap-right { right: 0; }
+
+    .tap-center {
+      position: absolute;
+      left: 32%;
+      right: 32%;
+      top: 0;
+      bottom: 0;
+      z-index: 5;
+    }
+
+    .fade-in {
+      animation: fade .28s ease-out;
+    }
+
+    @keyframes fade {
+      from { opacity: .02; transform: translateY(8px) scale(.985); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .decor {
+      position: absolute;
+      inset: auto 0 18px;
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+      opacity: .85;
+      font-size: 24px;
+      letter-spacing: 12px;
+      filter: drop-shadow(0 10px 22px rgba(0,0,0,.25));
+    }
+
+    .photo-frame {
+      width: 100%;
+      height: 100%;
+      min-height: 72vh;
+      border-radius: 28px;
+      overflow: hidden;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-empty {
+      width: 100%;
+      height: 100%;
+      min-height: 72vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      text-align: center;
+      gap: 8px;
+      color: rgba(255,255,255,.76);
+      background: linear-gradient(135deg, rgba(255,79,216,.10), rgba(139,92,246,.08));
+    }
+
+    .photo-empty .icon {
+      font-size: 42px;
+      line-height: 1;
+    }
+
+    .footer-note {
+      position: absolute;
+      left: 50%;
+      bottom: calc(env(safe-area-inset-bottom) + 10px);
+      transform: translateX(-50%);
+      font-size: 10px;
+      color: rgba(255,255,255,.42);
+      letter-spacing: .08em;
+      pointer-events: none;
+    }
+
+    .screen-edge {
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(255,255,255,.05);
+      pointer-events: none;
+    }
+
+    @media (min-width: 431px) {
+      body {
+        display: grid;
+        place-items: center;
+      }
+      .phone {
+        height: min(100vh, 932px);
+        border-radius: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="phone" id="phone">
+      <div class="screen-edge"></div>
+
+      <div class="tap-zone tap-left" id="tapLeft" aria-label="Story anterior"></div>
+      <div class="tap-zone tap-right" id="tapRight" aria-label="Próximo story"></div>
+      <div class="tap-center" aria-hidden="true"></div>
+
+      <!-- Story 1 -->
+      <section class="story active" data-story="0">
+        <div class="story-inner fade-in">
+          <div class="progress-wrap" id="progressWrap"></div>
+          <div class="topbar">
+            <div>
+              <div class="title">RibeiroLet ❤️</div>
+              <div class="subtitle">Feliz Dia dos Namorados</div>
+            </div>
+            <div class="pill">Story 1/10</div>
+          </div>
+
+          <div class="content">
+            <div class="card hero hero-romance">
+              <div class="badge">✨ um dia para guardar na memória</div>
+              <h1 class="big-title">Feliz Dia dos Namorados, RibeiroLet ❤️</h1>
+              <p class="main-text">Conheci a felicidade há exatamente:</p>
+              <div class="timer-box">
+                <div class="timer-label">Desde 17/10/2025 às 21:29</div>
+                <div class="timer" id="timer">
+                  <div class="tblock"><span class="tval" id="months">0</span><span class="tunit">meses</span></div>
+                  <div class="tblock"><span class="tval" id="days">0</span><span class="tunit">dias</span></div>
+                  <div class="tblock"><span class="tval" id="hours">0</span><span class="tunit">horas</span></div>
+                  <div class="tblock"><span class="tval" id="minutes">0</span><span class="tunit">min</span></div>
+                </div>
+                <div style="margin-top:10px; font-size:12px; color: rgba(255,255,255,.7);" id="secondsLine">0 segundos</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="controls-hint"><span>Toque à esquerda para voltar</span><span>Toque à direita para avançar</span></div>
+        </div>
+      </section>
+
+      <!-- Story 2 -->
+      <section class="story" data-story="1">
+        <div class="story-inner fade-in">
+          <div class="progress-wrap"></div>
+          <div class="topbar">
+            <div>
+              <div class="title">RibeiroLet ❤️</div>
+              <div class="subtitle">Story 2</div>
+            </div>
+            <div class="pill">Story 2/10</div>
+          </div>
+
+          <div class="content">
+            <div class="card text-card font-playfair">
+              <p class="story-text">Você é a melhor pessoa que Deus poderia ter colocado na minha vida. Sonhamos os mesmos sonhos, construímos os mesmos objetivos e queremos o mesmo futuro. Além de ser o amor da minha vida, você é minha melhor amiga, minha companheira de copo, minha parceira de fofocas. Tenho muita sorte em ter encontrado tudo em uma unica pessoa. Sou o homem mais feliz do mundo por ter você ao meu lado!</p>
+            </div>
+          </div>
+
+          <div class="controls-hint"><span>Toque à esquerda para voltar</span><span>Toque à direita para avançar</span></div>
+        </div>
+      </section>
+
+      <!-- Story 3 -->
+      <section class="story" data-story="2">
+        <div class="story-inner fade-in">
+          <div class="progress-wrap"></div>
+          <div class="topbar">
+            <div>
+              <div class="title">RibeiroLet ❤️</div>
+              <div class="subtitle">Story 3</div>
+            </div>
+            <div class="pill">Story 3/10</div>
+          </div>
+
+          <div class="content">
+            <div class="photo-empty">
+              <div class="icon">📷</div>
+              <strong>Foto do casal</strong>
+              <div>Espaço reservado para a imagem.</div>
+            </div>
+          </div>
+
+          <div class="controls-hint"><span>Toque à esquerda para voltar</span><span>Toque à direita para avançar</span></div>
+        </div>
+      </section>
+
+      <!-- Story 4 -->
+      <section class="story" data-story="3">
+        <div class="story-inner fade-in">
+          <div class="progress-wrap"></div>
+          <div class="topbar">
+            <div>
+              <div class="title">RibeiroLet ❤️</div>
+              <div class="subtitle">Story 4</div>
+            </div>
+            <div class="pill">Story 4/10</div>
+          </div>
+
+          <div class="content">
+            <div class="card text-card font-prata">
+              <p class="story-text">O que eu mais amo em você são os pequenos detalhes: seu jeito de rir, de cuidar das pessoas ao seu redor (você é conhecida por isso até por pessoas que nem te conhecem), de transformar qualquer momento simples em algo especial e de fazer eu me sentir em casa quando estou contigo</p>
+            </div>
+          </div>
+
+          <div class="controls-hint"><span>Toque à esquerda para voltar</span><span>Toque à direita para avançar</span></div>
+        </div>
+      </section>
+
+      <!-- Story 5 -->
+      <section class="story" data-story="4">
+        <div class="story-inner fade-in">
+          <div class="progress-wrap"></div>
+          <div class="topbar">
+            <div>
+              <div class="title">RibeiroLet ❤️</div>
+              <div class="subtitle">Story 5</div>
+            </div>
+            <div class="pill">Story 5/10</div>
+          </div>
+
+          <div class="content">
+            <div class="card text-card font-fraunces">
+              <p class="story-text">Você é uma mulher incrível, todos ao seu redor são eternamente gratos por ter você na vida deles.</p>
+            </div>
+          </div>
+
+          <div class="controls-hint"><span>Toque à esquerda para voltar</span><span>Toque à direita para avançar</span></div>
+        </div>
+      </section>
+
+      <!-- Story 6 -->
+      <section class="story" data-story="5">
+        <div class="story-inner fade-in">
+          <div class="progress-wrap"></div>
+          <div class="topbar">
+            <div>
+              <div class="title">RibeiroLet ❤️</div>
+              <div class="subtitle">Story 6</div>
+            </div>
+            <div class="pill">Story 6/10</div>
+          </div>
+
+          <div class="content">
+            <div class="photo-empty">
+              <div class="icon">📷</div>
+              <strong>Foto com a Cecília</strong>
+              <div>Espaço reservado para a imagem.</div>
+            </div>
+          </div>
+
+          <div class="controls-hint"><span>Toque à esquerda para voltar</span><span>Toque à direita para avançar</span></div>
+        </div>
+      </section>
+
+      <!-- Story 7 -->
+      <section class="story" data-story="6">
+        <div class="story-inner fade-in">
+          <div class="progress-wrap"></div>
+          <div class="topbar">
+            <div>
+              <div class="title">RibeiroLet ❤️</div>
+              <div class="subtitle">Story 7</div>
+            </div>
+            <div class="pill">Story 7/10</div>
+          </div>
+
+          <div class="content">
+            <div class="card text-card font-instrument">
+              <p class="story-text">Agora vamos falar do que eu mais amo em você: a impressionante capacidade de beber uma breja. No começo eu sofri para acompanhar você viu. Mas também não é justo, olha o nível de amor que você tem pela cerveja:</p>
+            </div>
+          </div>
+
+          <div class="controls-hint"><span>Toque à esquerda para voltar</span><span>Toque à direita para avançar</span></div>
+        </div>
+      </section>
+
+      <!-- Story 8 -->
+      <section class="story" data-story="7">
+        <div class="story-inner fade-in">
+          <div class="progress-wrap"></div>
+          <div class="topbar">
+            <div>
+              <div class="title">RibeiroLet ❤️</div>
+              <div class="subtitle">Story 8</div>
+            </div>
+            <div class="pill">Story 8/10</div>
+          </div>
+
+          <div class="content">
+            <div class="photo-empty">
+              <div class="icon">🍺</div>
+              <strong>Foto da cerveja</strong>
+              <div>Espaço reservado para a imagem.</div>
+            </div>
+          </div>
+
+          <div class="controls-hint"><span>Toque à esquerda para voltar</span><span>Toque à direita para avançar</span></div>
+        </div>
+      </section>
+
+      <!-- Story 9 -->
+      <section class="story" data-story="8">
+        <div class="story-inner fade-in">
+          <div class="progress-wrap"></div>
+          <div class="topbar">
+            <div>
+              <div class="title">RibeiroLet ❤️</div>
+              <div class="subtitle">Story 9</div>
+            </div>
+            <div class="pill">Story 9/10</div>
+          </div>
+
+          <div class="content">
+            <div class="photo-empty">
+              <div class="icon">👩‍👩‍👧‍👦</div>
+              <strong>Foto com as mães</strong>
+              <div>Espaço reservado para a imagem.</div>
+            </div>
+          </div>
+
+          <div class="controls-hint"><span>Toque à esquerda para voltar</span><span>Toque à direita para avançar</span></div>
+        </div>
+      </section>
+
+      <!-- Story 10 -->
+      <section class="story" data-story="9">
+        <div class="story-inner fade-in">
+          <div class="progress-wrap"></div>
+          <div class="topbar">
+            <div>
+              <div class="title">RibeiroLet ❤️</div>
+              <div class="subtitle">Story 10</div>
+            </div>
+            <div class="pill">Story 10/10</div>
+          </div>
+
+          <div class="content">
+            <div class="card hero text-card font-dm-serif">
+              <div class="badge">💜 para sempre nós</div>
+              <p class="story-text" style="text-align:center;">Obrigado por cada conversa, cada risada, cada abraço e cada momento que vivemos juntos. Eu amo a mulher que você é hoje e tenho certeza de que vou amar ainda mais a mulher que você será no futuro. Feliz Dia dos Namorados, meu amor. ❤️</p>
+            </div>
+          </div>
+
+          <div class="controls-hint"><span>Toque à esquerda para voltar</span><span>Toque à direita para avançar</span></div>
+        </div>
+      </section>
+
+      <div class="footer-note">Toque nas laterais para navegar</div>
+      <div class="decor">✦  ✧  ✦</div>
+    </div>
+  </div>
+
+  <script>
+    const TOTAL = 10;
+    const STORY_DURATION = 8000;
+    const HOLD_DELAY = 180;
+    const phone = document.getElementById('phone');
+    const tapLeft = document.getElementById('tapLeft');
+    const tapRight = document.getElementById('tapRight');
+    const stories = Array.from(document.querySelectorAll('.story'));
+    const progressWraps = Array.from(document.querySelectorAll('.progress-wrap'));
+    let current = 0;
+    let timerInterval = null;
+    let progressElapsed = 0;
+    let progressStartedAt = 0;
+    let holdTimeout = null;
+    let holdTriggered = false;
+    let suppressTapUntil = 0;
+
+    function buildProgress() {
+      progressWraps.forEach((wrap) => {
+        wrap.innerHTML = '';
+        for (let i = 0; i < TOTAL; i++) {
+          const p = document.createElement('div');
+          p.className = 'progress';
+          const s = document.createElement('span');
+          p.appendChild(s);
+          wrap.appendChild(p);
+        }
+      });
+    }
+
+    function setProgress(activeIndex) {
+      progressWraps.forEach((wrap) => {
+        const bars = wrap.querySelectorAll('.progress > span');
+        bars.forEach((bar, idx) => {
+          if (idx < activeIndex) {
+            bar.style.transform = 'scaleX(1)';
+            bar.style.transition = 'none';
+          } else if (idx > activeIndex) {
+            bar.style.transform = 'scaleX(0)';
+            bar.style.transition = 'none';
+          } else {
+            bar.style.transform = 'scaleX(0)';
+            bar.style.transition = 'none';
+          }
+        });
+      });
+    }
+
+    function getActiveProgressBar() {
+      const bars = document.querySelectorAll('.story.active .progress > span');
+      return bars[current] || null;
+    }
+
+    function animateCurrentProgress() {
+      const bars = document.querySelectorAll('.story.active .progress > span');
+      bars.forEach((bar, idx) => {
+        if (idx < current) {
+          bar.style.transform = 'scaleX(1)';
+          bar.style.transition = 'none';
+        } else if (idx > current) {
+          bar.style.transform = 'scaleX(0)';
+          bar.style.transition = 'none';
+        } else {
+          bar.style.transform = `scaleX(${Math.min(progressElapsed / STORY_DURATION, 1)})`;
+          bar.style.transition = 'none';
+        }
+      });
+      const currentBar = bars[current];
+      const remaining = Math.max(STORY_DURATION - progressElapsed, 0);
+      if (currentBar && remaining > 0) {
+        progressStartedAt = performance.now();
+        requestAnimationFrame(() => {
+          currentBar.style.transition = `transform ${remaining}ms linear`;
+          currentBar.style.transform = 'scaleX(1)';
+        });
+      }
+    }
+
+    function pauseStoryProgress() {
+      if (holdTriggered) return;
+      const currentBar = getActiveProgressBar();
+      if (!currentBar) return;
+
+      progressElapsed = Math.min(
+        STORY_DURATION,
+        progressElapsed + (performance.now() - progressStartedAt)
+      );
+      currentBar.style.transition = 'none';
+      currentBar.style.transform = `scaleX(${Math.min(progressElapsed / STORY_DURATION, 1)})`;
+      holdTriggered = true;
+    }
+
+    function resumeStoryProgress() {
+      if (!holdTriggered) return;
+      holdTriggered = false;
+      animateCurrentProgress();
+    }
+
+    function clearHoldTimer() {
+      if (holdTimeout) {
+        clearTimeout(holdTimeout);
+        holdTimeout = null;
+      }
+    }
+
+    function beginHold() {
+      clearHoldTimer();
+      holdTimeout = setTimeout(() => {
+        pauseStoryProgress();
+      }, HOLD_DELAY);
+    }
+
+    function endHold() {
+      clearHoldTimer();
+      if (holdTriggered) {
+        suppressTapUntil = Date.now() + 400;
+        resumeStoryProgress();
+      }
+    }
+
+    function shouldSuppressTap() {
+      const shouldSuppress = Date.now() < suppressTapUntil;
+      if (shouldSuppress) {
+        suppressTapUntil = 0;
+      }
+      return shouldSuppress;
+    }
+
+    function showStory(index) {
+      current = Math.max(0, Math.min(TOTAL - 1, index));
+      progressElapsed = 0;
+      holdTriggered = false;
+      clearHoldTimer();
+      suppressTapUntil = 0;
+      stories.forEach((story, idx) => {
+        story.classList.toggle('active', idx === current);
+      });
+      const activeStory = document.querySelector('.story.active');
+      activeStory.classList.remove('fade-in');
+      void activeStory.offsetWidth;
+      activeStory.classList.add('fade-in');
+      setProgress(current);
+      animateCurrentProgress();
+    }
+
+    function nextStory() {
+      if (current < TOTAL - 1) showStory(current + 1);
+    }
+
+    function prevStory() {
+      if (current > 0) showStory(current - 1);
+    }
+
+    tapLeft.addEventListener('click', (e) => {
+      if (shouldSuppressTap()) {
+        e.preventDefault();
+        return;
+      }
+      prevStory();
+    });
+
+    tapRight.addEventListener('click', (e) => {
+      if (shouldSuppressTap()) {
+        e.preventDefault();
+        return;
+      }
+      nextStory();
+    });
+
+    let startX = null;
+    let startY = null;
+
+    phone.addEventListener('touchstart', (e) => {
+      const t = e.changedTouches[0];
+      startX = t.clientX;
+      startY = t.clientY;
+      beginHold();
+    }, { passive: true });
+
+    phone.addEventListener('touchmove', (e) => {
+      if (startX === null || startY === null || holdTriggered) return;
+      const t = e.changedTouches[0];
+      const dx = t.clientX - startX;
+      const dy = t.clientY - startY;
+      if (Math.abs(dx) > 10 || Math.abs(dy) > 10) {
+        clearHoldTimer();
+      }
+    }, { passive: true });
+
+    phone.addEventListener('touchend', (e) => {
+      endHold();
+      if (startX === null || startY === null) return;
+      const t = e.changedTouches[0];
+      const dx = t.clientX - startX;
+      const dy = t.clientY - startY;
+      if (!shouldSuppressTap() && Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+        if (dx < 0) nextStory();
+        else prevStory();
+      }
+      startX = null;
+      startY = null;
+    }, { passive: true });
+
+    phone.addEventListener('touchcancel', () => {
+      endHold();
+      startX = null;
+      startY = null;
+    }, { passive: true });
+
+    phone.addEventListener('mousedown', (e) => {
+      if (e.button !== 0) return;
+      beginHold();
+    });
+
+    phone.addEventListener('mouseup', endHold);
+    phone.addEventListener('mouseleave', endHold);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') nextStory();
+      if (e.key === 'ArrowLeft') prevStory();
+    });
+
+    function formatNumber(n) {
+      return String(n).padStart(2, '0');
+    }
+
+    function updateTimer() {
+      const start = new Date('2025-10-17T21:29:00-03:00');
+      const now = new Date();
+      let cursor = new Date(start);
+
+      let months = 0;
+      while (true) {
+        const next = new Date(cursor);
+        next.setMonth(next.getMonth() + 1);
+        if (next <= now) {
+          months++;
+          cursor = next;
+        } else {
+          break;
+        }
+      }
+
+      let diff = now - cursor;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      diff -= days * 1000 * 60 * 60 * 24;
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      diff -= hours * 1000 * 60 * 60;
+      const minutes = Math.floor(diff / (1000 * 60));
+      diff -= minutes * 1000 * 60;
+      const seconds = Math.floor(diff / 1000);
+
+      document.getElementById('months').textContent = months;
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = formatNumber(hours);
+      document.getElementById('minutes').textContent = formatNumber(minutes);
+      document.getElementById('secondsLine').textContent = `${formatNumber(seconds)} segundos`;
+    }
+
+    buildProgress();
+    showStory(0);
+    updateTimer();
+    timerInterval = setInterval(updateTimer, 1000);
+  </script>
+</body>
+</html>
