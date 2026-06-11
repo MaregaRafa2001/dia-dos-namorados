@@ -404,6 +404,7 @@
       font-weight: 700;
       letter-spacing: -.02em;
       text-wrap: balance;
+      text-align: center;
     }
 
     .main-text {
@@ -413,6 +414,7 @@
       text-wrap: balance;
       color: rgba(255,255,255,.94);
       font-weight: 600;
+      text-align: center;
     }
 
     .story-text {
@@ -427,6 +429,7 @@
       letter-spacing: .01em;
       text-wrap: pretty;
       white-space: pre-wrap;
+      text-align: center;
     }
 
     .text-card,
@@ -439,6 +442,8 @@
         linear-gradient(180deg, rgba(8,5,12,.98) 0%, rgba(2,1,4,.99) 100%);
       border: 1px solid rgba(255,255,255,.08);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.03), 0 26px 60px rgba(0,0,0,.5);
+      align-items: center;
+      text-align: center;
     }
 
     .text-card::before,
@@ -623,18 +628,6 @@
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
-    .decor {
-      position: absolute;
-      inset: auto 0 18px;
-      display: flex;
-      justify-content: center;
-      pointer-events: none;
-      opacity: .85;
-      font-size: 24px;
-      letter-spacing: 12px;
-      filter: drop-shadow(0 10px 22px rgba(0,0,0,.25));
-    }
-
     .photo-frame {
       width: 100%;
       height: 100%;
@@ -656,6 +649,36 @@
       display: block;
     }
 
+    .story[data-story="8"] .photo-frame {
+      background: rgba(3, 2, 8, .96);
+      min-height: 0;
+      flex: 1;
+    }
+
+    .story[data-story="8"] .photo-frame img {
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .story[data-story="8"] .content {
+      flex-direction: column;
+      justify-content: center;
+      gap: 18px;
+      padding: 6px 0 20px;
+    }
+
+    .story[data-story="8"] .photo-caption {
+      margin: 0;
+      padding: 0 12px;
+      text-align: center;
+      font-size: clamp(18px, 4.8vw, 24px);
+      line-height: 1.35;
+      color: rgba(255,255,255,.94);
+      font-family: var(--font-fraunces);
+      font-weight: 500;
+      text-wrap: balance;
+    }
+
     .photo-empty {
       width: 100%;
       height: 100%;
@@ -671,20 +694,22 @@
       background: linear-gradient(135deg, rgba(255,79,216,.10), rgba(139,92,246,.08));
     }
 
+    .photo-story .topbar,
+    .photo-story .controls-hint {
+      display: none;
+    }
+
+    .photo-story .story-inner {
+      padding-bottom: 0;
+    }
+
+    .photo-story .content {
+      align-items: stretch;
+    }
+
     .photo-empty .icon {
       font-size: 42px;
       line-height: 1;
-    }
-
-    .footer-note {
-      position: absolute;
-      left: 50%;
-      bottom: calc(env(safe-area-inset-bottom) + 10px);
-      transform: translateX(-50%);
-      font-size: 10px;
-      color: rgba(255,255,255,.42);
-      letter-spacing: .08em;
-      pointer-events: none;
     }
 
     .screen-edge {
@@ -729,7 +754,6 @@
 
           <div class="content">
             <div class="card hero hero-romance">
-              <div class="badge">✨ um dia para guardar na memória</div>
               <h1 class="big-title">Feliz Dia dos Namorados, RibeiroLet ❤️</h1>
               <p class="main-text">Conheci a felicidade há exatamente:</p>
               <div class="timer-box">
@@ -771,8 +795,8 @@
         </div>
       </section>
 
-      <!-- Story 3 -->
-      <section class="story" data-story="2">
+      <!-- Story 3 (Foto do casal) -->
+      <section class="story photo-story" data-story="2">
         <div class="story-inner fade-in">
           <div class="progress-wrap"></div>
           <div class="topbar">
@@ -784,10 +808,9 @@
           </div>
 
           <div class="content">
-            <div class="photo-empty">
-              <div class="icon">📷</div>
-              <strong>Foto do casal</strong>
-              <div>Espaço reservado para a imagem.</div>
+            <div class="photo-frame">
+              <img src="casal.jpeg" alt="Foto do casal" data-photo-source="casal.jpeg" loading="lazy" decoding="async">
+              <div class="photo-empty" hidden aria-hidden="true"></div>
             </div>
           </div>
 
@@ -839,8 +862,8 @@
         </div>
       </section>
 
-      <!-- Story 6 -->
-      <section class="story" data-story="5">
+      <!-- Story 6 (Foto com a Cecília) -->
+      <section class="story photo-story" data-story="5">
         <div class="story-inner fade-in">
           <div class="progress-wrap"></div>
           <div class="topbar">
@@ -852,10 +875,9 @@
           </div>
 
           <div class="content">
-            <div class="photo-empty">
-              <div class="icon">📷</div>
-              <strong>Foto com a Cecília</strong>
-              <div>Espaço reservado para a imagem.</div>
+            <div class="photo-frame">
+              <img src="cecilia.jpeg" alt="Foto com a Cecília" data-photo-source="cecilia.jpeg" loading="lazy" decoding="async">
+              <div class="photo-empty" hidden aria-hidden="true"></div>
             </div>
           </div>
 
@@ -885,8 +907,8 @@
         </div>
       </section>
 
-      <!-- Story 8 -->
-      <section class="story" data-story="7">
+      <!-- Story 8 (Foto da cerveja) -->
+      <section class="story photo-story" data-story="7">
         <div class="story-inner fade-in">
           <div class="progress-wrap"></div>
           <div class="topbar">
@@ -898,10 +920,9 @@
           </div>
 
           <div class="content">
-            <div class="photo-empty">
-              <div class="icon">🍺</div>
-              <strong>Foto da cerveja</strong>
-              <div>Espaço reservado para a imagem.</div>
+            <div class="photo-frame">
+              <img src="copao-cerveja.png" alt="Foto da cerveja" data-photo-source="copao-cerveja.png" loading="lazy" decoding="async">
+              <div class="photo-empty" hidden aria-hidden="true"></div>
             </div>
           </div>
 
@@ -909,8 +930,8 @@
         </div>
       </section>
 
-      <!-- Story 9 -->
-      <section class="story" data-story="8">
+      <!-- Story 9 (Foto com as mães) -->
+      <section class="story photo-story" data-story="8">
         <div class="story-inner fade-in">
           <div class="progress-wrap"></div>
           <div class="topbar">
@@ -922,11 +943,11 @@
           </div>
 
           <div class="content">
-            <div class="photo-empty">
-              <div class="icon">👩‍👩‍👧‍👦</div>
-              <strong>Foto com as mães</strong>
-              <div>Espaço reservado para a imagem.</div>
+            <div class="photo-frame">
+              <img src="foto-mae.jpeg" alt="Foto com as mães" data-photo-source="foto-mae.jpeg" loading="lazy" decoding="async">
+              <div class="photo-empty" hidden aria-hidden="true"></div>
             </div>
+            <p class="photo-caption">Um dos motivos de nos darmos tão bem é porque nossas prioridades são as mesmas: Nossas mães e cerveja &lt;3</p>
           </div>
 
           <div class="controls-hint"><span>Toque à esquerda para voltar</span><span>Toque à direita para avançar</span></div>
@@ -956,8 +977,6 @@
         </div>
       </section>
 
-      <div class="footer-note">Toque nas laterais para navegar</div>
-      <div class="decor">✦  ✧  ✦</div>
     </div>
   </div>
 
@@ -970,6 +989,7 @@
     const tapRight = document.getElementById('tapRight');
     const stories = Array.from(document.querySelectorAll('.story'));
     const progressWraps = Array.from(document.querySelectorAll('.progress-wrap'));
+    const photoFrames = Array.from(document.querySelectorAll('.photo-frame'));
     let current = 0;
     let timerInterval = null;
     let progressElapsed = 0;
@@ -1187,6 +1207,47 @@
       return String(n).padStart(2, '0');
     }
 
+    function probeImage(url) {
+      return new Promise((resolve) => {
+        const testImage = new Image();
+        testImage.onload = () => resolve(url);
+        testImage.onerror = () => resolve(null);
+        testImage.src = url;
+      });
+    }
+
+    async function resolvePhotoSource(preferredSource) {
+      if (!preferredSource) {
+        return null;
+      }
+
+      return probeImage(preferredSource);
+    }
+
+    async function hydrateStoryPhotos() {
+      await Promise.all(photoFrames.map(async (frame) => {
+        const image = frame.querySelector('img[data-photo-source]');
+        const emptyState = frame.querySelector('.photo-empty');
+
+        if (!image || !emptyState) {
+          return;
+        }
+
+        const preferredSource = image.dataset.photoSource || image.getAttribute('src') || '';
+        const source = await resolvePhotoSource(preferredSource);
+
+        if (source) {
+          image.src = source;
+          image.hidden = false;
+          emptyState.hidden = true;
+          return;
+        }
+
+        image.hidden = true;
+        emptyState.hidden = false;
+      }));
+    }
+
     function updateTimer() {
       const start = new Date('2025-10-17T21:29:00-03:00');
       const now = new Date();
@@ -1220,6 +1281,7 @@
       document.getElementById('secondsLine').textContent = `${formatNumber(seconds)} segundos`;
     }
 
+    hydrateStoryPhotos();
     buildProgress();
     showStory(0);
     updateTimer();
